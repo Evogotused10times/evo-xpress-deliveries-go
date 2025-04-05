@@ -54,10 +54,12 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				evo: {
-					purple: '#6E59A5',
+					purple: '#8B5CF6',
 					teal: '#0EA5E9',
 					light: '#F2FCE2',
 					dark: '#1A1F2C',
+					neon: '#00FFFF',
+					pink: '#F43F5E',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
@@ -111,13 +113,22 @@ export default {
 						opacity: '1',
 						transform: 'translateX(0)'
 					}
+				},
+				'neon-pulse': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.7'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
-				'slide-in': 'slide-in 0.3s ease-out'
+				'slide-in': 'slide-in 0.3s ease-out',
+				'neon-pulse': 'neon-pulse 2s ease-in-out infinite'
 			}
 		}
 	},

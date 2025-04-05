@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -12,10 +13,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em rgba(0, 255, 255, 0.7));
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em rgba(0, 255, 255, 0.7));
 }
 
 @keyframes logo-spin {
@@ -38,5 +39,15 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #88d8ff;
+}
+
+/* Cyberpunk-specific styles */
+.cyberpunk-border {
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.cyberpunk-glow {
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
 }
