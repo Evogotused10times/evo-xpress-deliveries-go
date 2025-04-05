@@ -1,5 +1,4 @@
-
-import { Parcel, ParcelFormData, DeliveryStatus } from "@/models/parcel";
+import { DeliveryAddress, DeliveryStatus, Parcel, ParcelFormData, ParcelType } from "@/models/parcel";
 
 // Mock database
 let parcels: Parcel[] = [];
