@@ -73,6 +73,14 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				neon: {
+					blue: '#00FFFF',
+					purple: '#BF00FF',
+					pink: '#FF00FF',
+					red: '#FF3131',
+					green: '#39FF14',
+					yellow: '#FFFF00'
 				}
 			},
 			borderRadius: {
@@ -124,6 +132,24 @@ export default {
 					'50%': {
 						opacity: '0.7'
 					}
+				},
+				'flicker': {
+					'0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100%': {
+						opacity: '0.99',
+						filter: 'brightness(1)'
+					},
+					'20%, 21.999%, 63%, 63.999%, 65%, 69.999%': {
+						opacity: '0.4',
+						filter: 'brightness(0.8)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-5px)'
+					}
 				}
 			},
 			animation: {
@@ -131,9 +157,36 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
 				'slide-in': 'slide-in 0.3s ease-out',
-				'neon-pulse': 'neon-pulse 2s ease-in-out infinite'
+				'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
+				'flicker': 'flicker 3s linear infinite',
+				'float': 'float 3s ease-in-out infinite'
+			},
+			boxShadow: {
+				'neon-blue': '0 0 5px #00FFFF, 0 0 10px #00FFFF',
+				'neon-purple': '0 0 5px #BF00FF, 0 0 10px #BF00FF',
+				'neon-pink': '0 0 5px #FF00FF, 0 0 10px #FF00FF',
+				'neon-sm': '0 0 2px theme("colors.primary.DEFAULT"), 0 0 4px theme("colors.primary.DEFAULT")',
+				'neon-md': '0 0 5px theme("colors.primary.DEFAULT"), 0 0 10px theme("colors.primary.DEFAULT")',
+				'neon-lg': '0 0 7px theme("colors.primary.DEFAULT"), 0 0 14px theme("colors.primary.DEFAULT"), 0 0 21px theme("colors.primary.DEFAULT")'
+			},
+			textShadow: {
+				'neon-sm': '0 0 2px theme("colors.primary.DEFAULT"), 0 0 4px theme("colors.primary.DEFAULT")',
+				'neon-md': '0 0 5px theme("colors.primary.DEFAULT"), 0 0 10px theme("colors.primary.DEFAULT")',
+				'neon-lg': '0 0 7px theme("colors.primary.DEFAULT"), 0 0 14px theme("colors.primary.DEFAULT"), 0 0 21px theme("colors.primary.DEFAULT")'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		function({ addUtilities, theme }) {
+			const textShadows = theme('textShadow')
+			const newUtilities = {}
+			Object.keys(textShadows).forEach(key => {
+				newUtilities[`.text-shadow-${key}`] = {
+					'text-shadow': textShadows[key]
+				}
+			})
+			addUtilities(newUtilities)
+		}
+	],
 } satisfies Config;
